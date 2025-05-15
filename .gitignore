@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media/
+
+# Migrations
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Static & collected files (if using collectstatic)
+staticfiles/
+*.css.map
+
+# Node & npm dependencies (if using frontend tools)
+node_modules/
+
+# Coverage reports
+.coverage
+htmlcov/
+
+# macOS files
+.DS_Store
+
+# Testing cache
+.pytest_cache/
+
+# Database backups
+*.bak
+*.dump
