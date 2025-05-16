@@ -31,7 +31,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-21196.up.railway.app']
+CSRF_TRUSTED_ORIGINS = [
+    'https://web-production-21196.up.railway.app',
+    'https://cts.up.railway.app',  # Removed trailing slash
+    'http://localhost:3000',       # Changed to http unless you use HTTPS locally
+    'http://localhost:3001'        # Changed to http unless you use HTTPS locally
+]
 
 
 # Application definition
