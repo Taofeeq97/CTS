@@ -27,8 +27,7 @@ class FarmerDetailView(generics.RetrieveUpdateDestroyAPIView):
     API view to retrieve, update or delete farmer
     """
     queryset = Farmer.objects.all()
-    serializer_class = FarmerSerializer
-    permission_classes = [IsAuthenticated]
+    serializer_class = FarmerSerializer 
     lookup_field = 'farmer_id'
 
 
@@ -37,8 +36,7 @@ class CollectionCenterListCreateView(generics.ListCreateAPIView):
     API view to retrieve list of collection centers or create new center
     """
     queryset = CollectionCenter.objects.all()
-    serializer_class = CollectionCenterSerializer
-    permission_classes = [IsAuthenticated]
+    serializer_class = CollectionCenterSerializer 
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['drying_method', 'status']
     search_fields = ['name', 'center_id', 'location']
@@ -50,8 +48,7 @@ class CollectionCenterDetailView(generics.RetrieveUpdateDestroyAPIView):
     API view to retrieve, update or delete collection center
     """
     queryset = CollectionCenter.objects.all()
-    serializer_class = CollectionCenterSerializer
-    permission_classes = [IsAuthenticated]
+    serializer_class = CollectionCenterSerializer 
     lookup_field = 'center_id'
 
 
@@ -60,8 +57,7 @@ class ProcessingFacilityListCreateView(generics.ListCreateAPIView):
     API view to retrieve list of processing facilities or create new facility
     """
     queryset = ProcessingFacility.objects.all()
-    serializer_class = ProcessingFacilitySerializer
-    permission_classes = [IsAuthenticated]
+    serializer_class = ProcessingFacilitySerializer 
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = [
         'haccp_certified', 'iso_22000_certified', 
@@ -76,8 +72,7 @@ class ProcessingFacilityDetailView(generics.RetrieveUpdateDestroyAPIView):
     API view to retrieve, update or delete processing facility
     """
     queryset = ProcessingFacility.objects.all()
-    serializer_class = ProcessingFacilitySerializer
-    permission_classes = [IsAuthenticated]
+    serializer_class = ProcessingFacilitySerializer 
     lookup_field = 'facility_id'
 
 
@@ -86,8 +81,7 @@ class PackagingCenterListCreateView(generics.ListCreateAPIView):
     API view to retrieve list of packaging centers or create new center
     """
     queryset = PackagingCenter.objects.all()
-    serializer_class = PackagingCenterSerializer
-    permission_classes = [IsAuthenticated]
+    serializer_class = PackagingCenterSerializer 
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['status']
     search_fields = ['name', 'center_id', 'location']
@@ -99,8 +93,7 @@ class PackagingCenterDetailView(generics.RetrieveUpdateDestroyAPIView):
     API view to retrieve, update or delete packaging center
     """
     queryset = PackagingCenter.objects.all()
-    serializer_class = PackagingCenterSerializer
-    permission_classes = [IsAuthenticated]
+    serializer_class = PackagingCenterSerializer 
     lookup_field = 'center_id'
 
 
@@ -109,8 +102,7 @@ class BatchListCreateView(generics.ListCreateAPIView):
     API view to retrieve list of batches or create new batch
     """
     queryset = Batch.objects.all()
-    serializer_class = BatchSerializer
-    permission_classes = [IsAuthenticated]
+    serializer_class = BatchSerializer 
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['collection_center', 'processing_facility', 'packaging_center', 'year']
     search_fields = ['batch_number']
@@ -122,16 +114,14 @@ class BatchDetailView(generics.RetrieveUpdateDestroyAPIView):
     API view to retrieve, update or delete batch
     """
     queryset = Batch.objects.all()
-    serializer_class = BatchSerializer
-    permission_classes = [IsAuthenticated]
+    serializer_class = BatchSerializer 
     lookup_field = 'batch_number'
 
 
 class GenerateBatchNumberView(APIView):
     """
     API view to generate a new batch number
-    """
-    permission_classes = [IsAuthenticated]
+    """ 
     
     def post(self, request):
         doa = request.data.get('doa')
