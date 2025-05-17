@@ -38,6 +38,9 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3001'        # Changed to http unless you use HTTPS locally
 ]
 
+
+CORS_ALLOW_CREDENTIALS = True
+
 # CORS_ALLOWED_ORIGINS = [ 
 #     'https://web-production-21196.up.railway.app',
 #     'https://cts.up.railway.app',  # Removed trailing slash
