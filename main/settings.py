@@ -38,13 +38,17 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3001'        # Changed to http unless you use HTTPS locally
 ]
 
-CORS_ALLOWED_ORIGINS = [ 
-    'https://web-production-21196.up.railway.app',
-    'https://cts.up.railway.app',  # Removed trailing slash
-    'http://localhost:3000',       # Changed to http unless you use HTTPS locally
-    'http://localhost:3001'        # Changed to http unless you use HTTPS locally
-]
-# Application definition
+# CORS_ALLOWED_ORIGINS = [ 
+#     'https://web-production-21196.up.railway.app',
+#     'https://cts.up.railway.app',  # Removed trailing slash
+#     'http://localhost:3000',       # Changed to http unless you use HTTPS locally
+#     'http://localhost:3001'        # Changed to http unless you use HTTPS locally
+# ]
+# # Application definition
+
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 
 INSTALLED_APPS = [
      "corsheaders",
@@ -128,7 +132,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-    
+
 }
 
 # Update database configuration from $DATABASE_URL environment variable (if defined)
