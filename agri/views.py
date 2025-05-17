@@ -15,8 +15,7 @@ class FarmerListCreateView(generics.ListCreateAPIView):
     API view to retrieve list of farmers or create new farmer
     """
     queryset = Farmer.objects.all()
-    serializer_class = FarmerSerializer
-    permission_classes = [IsAuthenticated]
+    serializer_class = FarmerSerializer 
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['region', 'certification', 'status']
     search_fields = ['name', 'farmer_id']
