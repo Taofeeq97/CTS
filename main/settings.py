@@ -39,16 +39,6 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
-CORS_ALLOW_CREDENTIALS = True
-
-# CORS_ALLOWED_ORIGINS = [ 
-#     'https://web-production-21196.up.railway.app',
-#     'https://cts.up.railway.app',  # Removed trailing slash
-#     'http://localhost:3000',       # Changed to http unless you use HTTPS locally
-#     'http://localhost:3001'        # Changed to http unless you use HTTPS locally
-# ]
-# # Application definition
-
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
@@ -69,6 +59,27 @@ INSTALLED_APPS = [
 ]
 
 
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]  
+
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
         'Bearer': {
@@ -84,8 +95,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MIDDLEWARE = [ 
     'django.middleware.security.SecurityMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
