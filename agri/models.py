@@ -10,9 +10,9 @@ class Farmer(models.Model):
     )
     
     CERTIFICATION_CHOICES = (
-        ('organic', 'Organic'),
-        ('fair_trade', 'Fair Trade'),
-        ('none', 'None'),
+        ('Organic', 'Organic'),
+        ('Fair Trade', 'Fair Trade'),
+        ('None', 'None'),
     )
     
     farmer_id = models.CharField(max_length=10, unique=True)
@@ -33,9 +33,9 @@ class Farmer(models.Model):
 
 class CollectionCenter(models.Model):
     DRYING_METHOD_CHOICES = (
-        ('sun_dried', 'Sun-dried'),
-        ('mechanical', 'Mechanical'),
-        ('controlled_drying', 'Controlled drying'),
+        ('Sun-dried', 'Sun-dried'),
+        ('Mechanical', 'Mechanical'),
+        ('Controlled drying', 'Controlled drying'),
     )
     
     center_id = models.CharField(max_length=10, unique=True)
