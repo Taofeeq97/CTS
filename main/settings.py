@@ -38,7 +38,12 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3001'        # Changed to http unless you use HTTPS locally
 ]
 
-
+CORS_ALLOWED_ORIGINS = [
+    'https://web-production-21196.up.railway.app',
+    'https://cts.up.railway.app',  # Removed trailing slash
+    'http://localhost:3000',       # Changed to http unless you use HTTPS locally
+    'http://localhost:3001'        # Changed to http unless you use HTTPS locally
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -53,6 +58,7 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework_simplejwt',
     'drf_yasg',
+    "corsheaders",
 ]
 
 
@@ -70,6 +76,7 @@ SWAGGER_SETTINGS = {
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
