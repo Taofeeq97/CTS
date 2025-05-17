@@ -34,7 +34,7 @@ class Farmer(models.Model):
 class CollectionCenter(models.Model):
     DRYING_METHOD_CHOICES = (
         ('Sun-dried', 'Sun-dried'),
-        ('Mechanical', 'Mechanical'),
+        ('Mechanical drying', 'Mechanical drying'),
         ('Controlled drying', 'Controlled drying'),
     )
     
