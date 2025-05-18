@@ -58,10 +58,7 @@ class ProcessingFacilityListCreateView(generics.ListCreateAPIView):
     queryset = ProcessingFacility.objects.all()
     serializer_class = ProcessingFacilitySerializer 
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
-    filterset_fields = [
-        'haccp_certified', 'iso_22000_certified', 
-        'fair_trade_certified', 'organic_certified', 'status'
-    ]
+    filterset_fields = ['status']
     search_fields = ['name', 'facility_id', 'location']
     ordering_fields = ['name', 'capacity']
 
