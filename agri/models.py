@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
+from django.contrib.postgres.fields import ArrayField
 
 
 class Farmer(models.Model):
@@ -55,6 +56,14 @@ class CollectionCenter(models.Model):
 
 
 class ProcessingFacility(models.Model):
+
+    CERTIFICATION_CHOICES = [
+        ('HACCP', 'HACCP Certified'),
+        ('ISO22000', 'ISO 22000 Certified'),
+        ('FAIR TRADE', 'Fair Trade Certified'),
+        ('ORGANIC', 'Organic Certified'),
+    ]
+
     facility_id = models.CharField(max_length=10, unique=True)
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
@@ -62,10 +71,11 @@ class ProcessingFacility(models.Model):
     manager = models.CharField(max_length=100, null=True, blank=True)
     contact = models.CharField(max_length=20, null=True, blank=True)
     capacity = models.FloatField(validators=[MinValueValidator(0)], help_text="Capacity in tons/day")
-    haccp_certified = models.BooleanField(default=False)
-    iso_22000_certified = models.BooleanField(default=False)
-    fair_trade_certified = models.BooleanField(default=False)
-    organic_certified = models.BooleanField(default=False)
+    certifications = ArrayField(
+        models.CharField(max_length=20, choices=CERTIFICATION_CHOICES),
+        blank=True,
+        default=list,
+    )
     status = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
