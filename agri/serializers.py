@@ -105,3 +105,7 @@ class BatchSerializer(serializers.ModelSerializer):
             instance.contributing_farmers.all(), many=True
         ).data
         return representation
+    
+
+class BatchNumberSearchSerializer(serializers.Serializer):
+    batch_number = serializers.CharField(max_length=255, required=True)

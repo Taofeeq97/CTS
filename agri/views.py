@@ -5,7 +5,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Farmer, CollectionCenter, ProcessingFacility, PackagingCenter, Batch
 from .serializers import (
     FarmerSerializer, CollectionCenterSerializer, ProcessingFacilitySerializer,
-    PackagingCenterSerializer, BatchSerializer
+    PackagingCenterSerializer, BatchSerializer, BatchNumberSearchSerializer
 )
 
 
@@ -150,3 +150,32 @@ class GenerateBatchNumberView(APIView):
             },
             status=status.HTTP_200_OK
         )
+    
+
+class BatchDetailsSearchAPIView(generics.GenericAPIView):
+    """
+    API view to search for batch details by batch number using POST
+    with a request body payload
+    """
+    serializer_class = BatchSerializer 
+    queryset = Batch.objects.all()
+    
+    def post(self, request, *args, **kwargs):
+        search_serializer = BatchNumberSearchSerializer(data=request.data)
+        if not search_serializer.is_valid():
+            return Response(
+                search_serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        batch_number = search_serializer.validated_data.get('batch_number')
+        
+        try:
+            batch = self.queryset.get(batch_number=batch_number)
+            response_serializer = self.serializer_class(batch)
+            
+            return Response(response_serializer.data, status=status.HTTP_200_OK)
+        except Batch.DoesNotExist:
+            return Response(
+                {"error": f"Batch with number '{batch_number}' not found"},
+                status=status.HTTP_404_NOT_FOUND
+            )
