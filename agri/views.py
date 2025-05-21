@@ -153,10 +153,6 @@ class GenerateBatchNumberView(APIView):
     
 
 class BatchDetailsSearchAPIView(generics.GenericAPIView):
-    """
-    API view to search for batch details by batch number using POST
-    with a request body payload
-    """
     serializer_class = BatchSerializer 
     queryset = Batch.objects.all()
     
