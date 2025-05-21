@@ -23,5 +23,5 @@ urlpatterns = [
     path('batches/', BatchListCreateView.as_view(), name='batch-list-create'),
     path('batches/<str:batch_number>/', BatchDetailView.as_view(), name='batch-detail'),
     path('generate-batch-number/', GenerateBatchNumberView.as_view(), name='generate-batch-number'),
-    path('batches/search/', BatchDetailsSearchAPIView.as_view(), name='batch-search'),
+    path('batches/search/batch_number', BatchDetailsSearchAPIView.as_view(), name='batch-search'),
 ]
