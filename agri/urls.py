@@ -4,7 +4,8 @@ from .views import (
     CollectionCenterListCreateView, CollectionCenterDetailView,
     ProcessingFacilityListCreateView, ProcessingFacilityDetailView,
     PackagingCenterListCreateView, PackagingCenterDetailView,
-    BatchListCreateView, BatchDetailView, GenerateBatchNumberView, BatchDetailsSearchAPIView
+    BatchListCreateView, BatchDetailView, GenerateBatchNumberView, 
+    BatchDetailsSearchAPIView, DashboardSummaryView
 )
 
 urlpatterns = [ 
@@ -24,4 +25,5 @@ urlpatterns = [
     path('batches/<str:batch_number>/', BatchDetailView.as_view(), name='batch-detail'),
     path('generate-batch-number/', GenerateBatchNumberView.as_view(), name='generate-batch-number'),
     path('batches/search/batch_number', BatchDetailsSearchAPIView.as_view(), name='batch-search'),
+    path('dashboard/summary/', DashboardSummaryView.as_view(), name='dashboard-summary'),
 ]

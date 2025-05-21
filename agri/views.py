@@ -175,3 +175,28 @@ class BatchDetailsSearchAPIView(generics.GenericAPIView):
                 {"error": f"Batch with number '{batch_number}' not found"},
                 status=status.HTTP_404_NOT_FOUND
             )
+
+
+class DashboardSummaryView(APIView):
+    """
+    API view to get summary of batches
+    """
+    
+    def get(self, request):
+        total_batches = Batch.objects.count()
+        total_farmers = Farmer.objects.count()
+        total_collection_centers = CollectionCenter.objects.count()
+        total_processing_facilities = ProcessingFacility.objects.count()
+        total_packaging_centers = PackagingCenter.objects.count()
+        
+        summary = {
+            "total_batches": total_batches,
+            "total_farmers": total_farmers,
+            "total_collection_centers": total_collection_centers,
+            "total_processing_facilities": total_processing_facilities,
+            "total_packaging_centers": total_packaging_centers
+        }
+        
+        return Response(summary, status=status.HTTP_200_OK)
+    
+    
