@@ -36,6 +36,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://cts.up.railway.app',  # Removed trailing slash
     'http://localhost:3000',       # Changed to http unless you use HTTPS locally
     'http://localhost:3001'        # Changed to http unless you use HTTPS locally
+    'https://storied-llama-f795ab.netlify.app',
+    'http://storied-llama-f795ab.netlify.app',
 ]
 
 
